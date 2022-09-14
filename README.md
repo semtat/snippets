@@ -1,1 +1,3 @@
-# semtat-snippets
+# snippets
+
+Algorithms and miniwiki

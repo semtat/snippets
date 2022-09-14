@@ -1,20 +1,16 @@
 import { sortList } from "../../algos/bubble_sort.js"
 
-function generateArray(length, max) {
-    return [...new Array(length)].map(() => Math.round(Math.random() * max))
-}
-
-function testBubbleSort(list) {
-    const oldList = list.slice()
+function testBubbleSort(list, oldList) {
     sortList(list)
-    const isCorrect = list.every((el, idx) => {
-        return el === oldList[idx]
-    })
-    console.log((isCorrect) ? 'Correct' : 'Incorrect')
+    if (list.length !== oldList.length) {
+        console.log('Incorrect')
+    } else {
+        console.log((list.every((el, idx) => el === oldList[idx])) ? 'Correct' : 'Incorrect')
+    }
 }
 
-testBubbleSort([1, 2, 3, 4, 5])
-testBubbleSort([0, 89, 0, 567, 1111, 2654654])
-testBubbleSort(generateArray(10, 100))
-testBubbleSort(generateArray(100, 1000))
-testBubbleSort(generateArray(111, 1111111))
+testBubbleSort([], [])
+testBubbleSort([1, 2, 3, 4, 5], [1, 2, 3, 4, 5])
+testBubbleSort([0, 22, -28, -1, 34, 0], [-28, -1, 0, 0, 22, 34])
+testBubbleSort([1, 4, 28, 177, 42, 99], [1, 4, 28, 42, 99, 177, 123])
+testBubbleSort([0, 89, 0, 567, 1111, 2654654], [0, 0, 89, 567, 1111, 2654654])
